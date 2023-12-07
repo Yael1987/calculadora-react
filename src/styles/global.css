@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* General */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+/* Tema */
+.light{
+  --color-black: #1a1e21;
+  --color-white: #f8f9fa;
+  --color-grey: #adb5bd;
+
+  --color-black--0: #1a1e21;
+  --color-black--1: #212529;
+  --color-black--2: #4d5154;
+
+  --color-main--0: #f06595;
+  --color-main--1: #c05177;
+
+  --color-white--0: #adb5bd;
+  --color-white--1: #dee2e6;
+  --color-white--2: #f8f9fa;
+}
+
+.dark{
+  --color-black: #1a1e21;
+  --color-white: #f8f9fa;
+  --color-grey: #adb5bd;
+
+  --color-black--1: #dee2e6;
+  --color-black--2: #f8f9fa;
+
+  --color-main--0: #c2255c;
+  --color-main--1: #c05177;
+
+  --color-white--1: #212529;
+  --color-white--2: #495057;
+}
+
+body{
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-white--1);
+  color: var(--color-black--1);
+  height: 100vh;
+  transition: all 0.2s;
+}
+
+#root{
+  width: 100%;
+  height: 100%;
+}
+
+/* Containers */
+.container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  grid-template-rows: 1fr;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar{
+  display: none;
+}
+
+@media (max-width: 1350px) {
+  .container{
+    grid-template-columns: 30rem 1fr;
+  }
+}
+
+@media (max-width: 1000px){
+  html{
+    font-size: 50%;
+  }
+
+  /* Containers */
+  .container{
+    grid-template-columns: 25% 1fr;
+  }
+}
+
+@media (max-width: 800px){
+  .container{
+    position: absolute;
+    grid-template-columns: 1fr;
+  }
+}

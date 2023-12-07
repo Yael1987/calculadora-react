@@ -1,0 +1,63 @@
+.btn{
+  border: none;
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 2.4rem;
+}
+
+.btn--option{
+  padding: 1.6rem;
+}
+
+.btn--popup{
+  border: none;
+  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.btn--action{
+  padding: 1.6rem;
+  font-weight: 300;
+  transition: all 0.3s;
+}
+
+.btn-color--main{
+  background-color: var(--color-main--0);
+  color: var(--color-white);  
+}
+
+.btn-color--white{
+  background-color: var(--color-white--2);
+  color: var(--color-black--1);
+  fill: var(--color-black--1);
+}
+
+.btn-color--dark{
+  background-color: var(--color-black--2);
+  color: var(--color-white--1);  
+}
+
+.btn--history{
+  display: none;
+}
+
+@media (max-width: 800px){
+  /* BTNS  */
+  .btn--action{
+    padding: 1.6rem 0.4rem;
+  }
+
+  .btn--history{
+    display: flex;
+  }
+}
+
+@media (max-width: 400px){
+  .btn--option{
+    padding: 0.8rem;
+  }
+}

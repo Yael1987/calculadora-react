@@ -1,0 +1,31 @@
+.icon{
+  display: block;
+}
+
+.icon--sm{
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.icon--md{
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+.icon--lg{
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+.icon-color--main{
+  fill: var(--color-main--0);
+}
+
+.icon-color--black{
+  fill: var(--color-black--1);
+  stroke: var(--color-black--1);
+}
+
+.icon-color--white{
+  fill: var(--color-white);
+}
