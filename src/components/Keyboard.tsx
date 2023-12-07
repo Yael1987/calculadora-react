@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Button as ButtonType } from "../utils/types";
 import Button from "./Button"
 import Icon from "./Icon"
@@ -8,7 +8,7 @@ type Props = {
   onButtonClick(event?: React.MouseEvent): void
 }
 
-const Keyboard: React.FC<Props> = ({ onButtonClick }) => {
+const Keyboard: React.FC<Props> = memo(({ onButtonClick }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   const buttons : ButtonType[] = useButtonsValues(isMobile)
 
@@ -38,6 +38,6 @@ const Keyboard: React.FC<Props> = ({ onButtonClick }) => {
       ))}
     </div>
   );
-}
+})
 
 export default Keyboard

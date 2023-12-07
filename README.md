@@ -1,11 +1,29 @@
-# React + TypeScript + Vite
+# Simple calculator made with React and Typescript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una calculadora simple construida usando React, Typescript y el paquete MathJS para realizar desde operaciones simples hasta trabajar con entidades trigonometricas, potencias, raices y con constantes como PI y e. La logica de la calculadora sigue un enfoque orientado oriententado a objetos.
 
-Currently, two official plugins are available:
+Operaciiones que se pueden realizar:
+
+- [x] Suma
+- [x] Resta
+- [x] Multiplicacion
+- [x] Division
+- [x] Seno
+- [x] Coseno
+- [x] Tangente
+- [x] Logaritmo (base 10)
+- [x] Valor absoluto
+- [x] Valor factorial
+- [x] PI
+- [x] e
+- [x] Potencia
+- [x] Raiz cuadrada
+- [x] Porcentaje
+- [x] Numero al cuadrado
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
 
 ## Expanding the ESLint configuration
 

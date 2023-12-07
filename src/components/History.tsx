@@ -1,18 +1,15 @@
 import '../styles/history.css'
-import { type SavedOperation } from '../utils/types';
 import Button from "./Button";
-import HistoryOperations from './HistoryOperations';
 import Icon from './Icon';
 
 interface Props{
   historyRef: React.RefObject<HTMLDivElement>,
   onShowHistory: () => void,
   onOpenModal: () => void,
-  savedOperations: SavedOperation[],
-  onSavedOperationClick: (event: React.MouseEvent<HTMLDivElement>) => void
+  children: JSX.Element
 }
 
-const History: React.FC<Props> = ({ historyRef, onShowHistory, onOpenModal, savedOperations, onSavedOperationClick }) => {
+const History: React.FC<Props> = ({ historyRef, onShowHistory, onOpenModal, children }) => {
   return (
     <>
       {/* <!-- container-history-display will display the history when this disapears in mobile screens --> */}
@@ -27,7 +24,7 @@ const History: React.FC<Props> = ({ historyRef, onShowHistory, onOpenModal, save
           </Button>
         </div>
 
-        <HistoryOperations savedOperations={savedOperations} onSavedOperationClick={onSavedOperationClick} />
+        {children}
       </div>
     </>
   );

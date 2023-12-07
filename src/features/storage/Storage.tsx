@@ -91,8 +91,8 @@ class Storage {
     );
   }
 
-  updateSavedOperations( operations: SavedOperation[] ) {
-    this.userData.savedOperations = operations;
+  updateSavedOperations( newOperation: SavedOperation ) {
+    this.userData.savedOperations = [newOperation, ...this.userData.savedOperations];
     localStorage.setItem(
       "calculatorConfig",
       JSON.stringify({...this.userData})

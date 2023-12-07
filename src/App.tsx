@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SavedOperation, type CalculatorResponseType } from './utils/types';
 import calculator from './features/calculator/Calculator'
@@ -15,6 +15,7 @@ import Keyboard from './components/Keyboard';
 import './styles/calculator.css'
 import { replaceKeyValue, validateBtnValue, validateKeyEntry } from './utils/validateEntry';
 import storage from './features/storage/Storage';
+import HistoryOperations from './components/HistoryOperations';
 
 const App = () => {
   const [operation, setOperation] = useState<string>("")
@@ -31,10 +32,6 @@ const App = () => {
       if (!validateKeyEntry(keydown.key)) return 
       
       keydown.preventDefault();
-
-      if (keydown.key === "i" && keydown.ctrlKey) {
-        return console.log("Cambio de tema");
-      }
 
       let calcResponse: CalculatorResponseType
 
@@ -76,7 +73,7 @@ const App = () => {
 
             setSavedOperations(currOperations => [operationToSave, ...currOperations])
 
-            storage.updateSavedOperations([operationToSave, ...savedOperations])
+            storage.updateSavedOperations(operationToSave)
 
             setOperation(String(calcResponse.data.result));
             setResult("");
@@ -102,7 +99,7 @@ const App = () => {
 
             setSavedOperations(currOperations => [operationToSave, ...currOperations])
 
-            storage.updateSavedOperations([operationToSave, ...savedOperations])
+            storage.updateSavedOperations(operationToSave)
 
             setOperation(String(calcResponse.data.result));
             setResult("");
@@ -142,13 +139,13 @@ const App = () => {
     })
   }, [savedOperations])
 
-  const showHistory = (): void => {
+  const showHistory = useCallback((): void => {
     historyRef.current?.classList.toggle("container-history-display");
-  };
+  }, [historyRef]);
 
-  const handleOpenModal = (): void => {
+  const handleOpenModal = useCallback((): void => {
     setIsModalOpen(showModal => !showModal)
-  }
+  }, [])
 
   const handleClickOk = (): void => {
     storage.clearSavedOperations();
@@ -157,7 +154,7 @@ const App = () => {
     setNotificationMessage("Historial eliminado")
   }
 
-  const handleSavedOperationClick = (event: React.MouseEvent<HTMLDivElement>): void => {
+  const handleSavedOperationClick = useCallback((event: React.MouseEvent<HTMLDivElement>): void => {
     if (event.target instanceof HTMLDivElement) { 
       let value: string = "";
 
@@ -181,9 +178,9 @@ const App = () => {
         setResult(String(calcResponse.data.result));
       }
     }
-  }
+  }, [])
 
-  const handleButtonClick = (event: React.MouseEvent<Element>): void => {
+  const handleButtonClick = useCallback((event: React.MouseEvent<Element>): void => {
     if (event.target instanceof Element) { 
       const entryValue = validateBtnValue(event.target)
       let calcResponse: CalculatorResponseType;
@@ -206,7 +203,7 @@ const App = () => {
 
             setSavedOperations(currOperations => [operationToSave, ...currOperations])
 
-            storage.updateSavedOperations([operationToSave, ...savedOperations])
+            storage.updateSavedOperations(operationToSave)
 
             setOperation(String(calcResponse.data.result));
             setResult("");
@@ -243,9 +240,9 @@ const App = () => {
           break;
       }
     }
-  }
+  }, [])
 
-  const handleUndoClick = () => {
+  const handleUndoClick = useCallback(() => {
     let calcResponse: CalculatorResponseType = calculator.undoOperation();
 
     if (!calcResponse.success) {
@@ -262,29 +259,50 @@ const App = () => {
 
     setOperation(calcResponse.data!.operation);
     setResult(() => calcResponse.data!.operation ? String(calcResponse.data!.result) : "");
-  }
+  }, [])
 
   return (
     <div className="container">
-      <History onSavedOperationClick={handleSavedOperationClick} historyRef={historyRef} onShowHistory={showHistory} onOpenModal={handleOpenModal} savedOperations={savedOperations} />
+      <History
+        historyRef={historyRef}
+        onShowHistory={showHistory}
+        onOpenModal={handleOpenModal}
+      >
+        <HistoryOperations
+          savedOperations={savedOperations}
+          onSavedOperationClick={handleSavedOperationClick}
+        />
+      </History>
 
       <div className="container-calculator">
         <Calculator>
           <CalculatorHeader />
 
           <div className="calculator-ui">
-            <CalculatorPanel operationRef={operationRef} operation={operation} result={result}/>
+            <CalculatorPanel
+              operationRef={operationRef}
+              operation={operation}
+              result={result}
+            />
 
-            <CalculatorOptions handleHistoryAction={showHistory} handleDeleteAction={handleUndoClick} />
+            <CalculatorOptions
+              handleHistoryAction={showHistory}
+              handleDeleteAction={handleUndoClick}
+            />
 
             <Keyboard onButtonClick={handleButtonClick} />
           </div>
         </Calculator>
       </div>
 
-      {isModalOpen && <Modal onOpenModal={handleOpenModal} onClickOk={handleClickOk}/>}
+      {isModalOpen && (
+        <Modal onOpenModal={handleOpenModal} onClickOk={handleClickOk} />
+      )}
 
-      <Notification message={notificationMessage} clearMessage={()=> setNotificationMessage("")} />
+      <Notification
+        message={notificationMessage}
+        clearMessage={() => setNotificationMessage("")}
+      />
     </div>
   );
 }
