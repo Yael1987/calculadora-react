@@ -5,7 +5,7 @@ This is a simple calculator built using React, Typescript, and the MathJS librar
 
 You can visit the deployed project in:
 
-- [Simple calculator](https://calculadora-react-am79l8j6z-yael1987.vercel.app/) deployed using Vercel
+- [Simple calculator](https://calculadora-react-yael1987.vercel.app/) deployed using Vercel
 
 ## Technologies used and how are implemented
 
