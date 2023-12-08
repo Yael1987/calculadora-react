@@ -14,6 +14,7 @@ You can visit the deployed project in:
 - **Typescript**: Is the programing language used in the project in order to make easer coding and maintain the project. I implemented custom types and interfaces in both React and business logic.
 
 - **MathJs**: Is used to evaluate the operation (which will be and string) using its evaluate method. I used this library instead of the build in evaluate function of Javascript to prevent some security problems.
+
 ## Features
 
 - Light/dark mode toggle
@@ -38,6 +39,7 @@ Operations that can be performed:
 - Square root
 - Percentage
 - Square of a number
+
 ## Project structure
 The project use a simple files and directories structure
 - **src**: Contains all the application files and directories that make up the application
@@ -51,27 +53,6 @@ The project use a simple files and directories structure
 - **styles**: Contains all the application styles in separated files
 
 - **utils**: Contains needed files like types file, utility classes and validators 
-
-
-## Class Details
-
-**Calculator class**
-
-Used to get the user entries and retreive the operation and result after getting some validations
-    
-| **Method**                | **Description**                                                                 |
-|---------------------------|---------------------------------------------------------------------------------|
-| resultOperation           | Adapts the string for its correct evaluation, and retrieve the operation result |
-| clearOperation            | Resets the operation string and the result                                      |
-| makeOperation             | Parses the string operation, evaluates the string and return the result         |
-| undoOperation             |                                                                                 |
-| updateCurrentOperation    |                                                                                 |
-| increaseParentesisCounter |                                                                                 |
-| decreaseParentesisCounter |                                                                                 |
-| getParentesisCounter      |                                                                                 |
-| setMaxStringLength        |                                                                                 |
-
-
 
 ## Run Locally
 
