@@ -1,48 +1,100 @@
-# Simple calculator made with React and Typescript
 
-Esta es una calculadora simple construida usando React, Typescript y el paquete MathJS para realizar desde operaciones simples hasta trabajar con entidades trigonometricas, potencias, raices y con constantes como PI y e. La logica de la calculadora sigue un enfoque orientado oriententado a objetos.
+# Simple calculator
 
-Operaciiones que se pueden realizar:
+This is a simple calculator built using React, Typescript, and the MathJS library to perform operations ranging from basic arithmetic to working with trigonometric functions, powers, roots, and constants like PI and e. The calculator's logic follows an object-oriented approach and uses localStorage to save user data like color theme and operations history.
 
-- [x] Suma
-- [x] Resta
-- [x] Multiplicacion
-- [x] Division
-- [x] Seno
-- [x] Coseno
-- [x] Tangente
-- [x] Logaritmo (base 10)
-- [x] Valor absoluto
-- [x] Valor factorial
-- [x] PI
-- [x] e
-- [x] Potencia
-- [x] Raiz cuadrada
-- [x] Porcentaje
-- [x] Numero al cuadrado
+You can visit the deployed project in:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Simple calculator](https://calculadora-react-am79l8j6z-yael1987.vercel.app/) deployed using Vercel
+
+## Technologies used and how are implemented
+
+- **React**: Is used to build the user interface and control the app state using build in hooks like useState and useEffect, also I implemented performance optimizations using memo and useCallback fuctions to prevent wasted re-renders.
+
+- **Typescript**: Is the programing language used in the project in order to make easer coding and maintain the project. I implemented custom types and interfaces in both React and business logic.
+
+- **MathJs**: Is used to evaluate the operation (which will be and string) using its evaluate method. I used this library instead of the build in evaluate function of Javascript to prevent some security problems.
+## Features
+
+- Light/dark mode toggle
+- History persistence using localStorage
+- Keyboard shortcuts
+
+Operations that can be performed:
+
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- Sine
+- Cosine
+- Tangent
+- Logarithm (base 10)
+- Absolute value
+- Factorial
+- PI
+- e
+- Power
+- Square root
+- Percentage
+- Square of a number
+## Project structure
+The project use a simple files and directories structure
+- **src**: Contains all the application files and directories that make up the application
+
+- **components**: Contains all the app components required to build the user interface
+
+- **features**: Contains all the business logic needed to perform mathematical operations and manage the storage
+
+- **hooks**: Contains the custom hook for change calculator buttons distribution
+
+- **styles**: Contains all the application styles in separated files
+
+- **utils**: Contains needed files like types file, utility classes and validators 
 
 
-## Expanding the ESLint configuration
+## Class Details
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Calculator class**
 
-- Configure the top-level `parserOptions` property like this:
+Used to get the user entries and retreive the operation and result after getting some validations
+    
+| **Method**                | **Description**                                                                 |
+|---------------------------|---------------------------------------------------------------------------------|
+| resultOperation           | Adapts the string for its correct evaluation, and retrieve the operation result |
+| clearOperation            | Resets the operation string and the result                                      |
+| makeOperation             | Parses the string operation, evaluates the string and return the result         |
+| undoOperation             |                                                                                 |
+| updateCurrentOperation    |                                                                                 |
+| increaseParentesisCounter |                                                                                 |
+| decreaseParentesisCounter |                                                                                 |
+| getParentesisCounter      |                                                                                 |
+| setMaxStringLength        |                                                                                 |
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Yael1987/calculadora-react.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Go to the project directory
+
+```bash
+  cd calculadora-react
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```

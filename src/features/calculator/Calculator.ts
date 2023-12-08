@@ -38,6 +38,9 @@ export class Calculator implements CalculatorType {
     return this.response;
   }
 
+  /*
+  * @forResult: boolean, if true then 
+  */ 
   clearOperation(forResult: boolean = false): CalculatorResponseType {
     try {
       this.operationString = forResult
@@ -65,7 +68,7 @@ export class Calculator implements CalculatorType {
   }
 
   makeOperation(
-    userEntry?: string,
+    userEntry: string = "",
     forResult: boolean = false
   ): CalculatorResponseType {
     try {
